@@ -36,4 +36,4 @@
 ## Slices
 * A slice is a kind of reference, so it does not have ownership.
 * A string slice is a reference to part of a String.
-* If we have a string slice, we can pass that directly. If we have a String, we can pass a slice of the String or a reference to the String. This flexibility takes advantage of deref coercions
+* If we have a string slice, we can pass that directly. If we have a String, we can pass a slice of the String or a reference to the String. This flexibility takes advantage of deref coercions30
