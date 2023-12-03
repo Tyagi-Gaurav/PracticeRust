@@ -90,6 +90,35 @@ fn main() {
     change(&mut s);
     //We also cannot have a mutable reference while we have an immutable one to the same value.
 
+    /*
+        Immutable reference to Immutable variable
+        let s = String::from("hello");
+        let r1 = &s;
+
+        Mutable reference to Immutable variable
+        Not possible
+
+        Immutable reference to Mutable variable
+         let mut s = String::from("hello");
+         let r1 = &s; --- Can have multiple immutable references
+         let r2 = &s;
+
+        Mutable reference to Mutable variable
+        let mut s = String::from("hello");
+        let r1 = &mut s; --- Can have only single mutable reference to mutable variable
+     */
+
+/*
+Any group of simple scalar values can implement Copy, and 
+nothing that requires allocation or is some form of resource can implement Copy.
+*/
+
+/*
+The ownership of a variable follows the same pattern every time: assigning a value to another variable moves it. When a 
+variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless ownership of the 
+data has been moved to another variable.
+*/
+
     println!();
     println!("{s}");
     let input = &String::from("To be or not to be");
@@ -158,3 +187,6 @@ fn no_dangle() -> String {
     //nothing is deallocated.
     s
 }
+
+//&str - String slice
+//string literals are immutable; &str is an immutable reference.

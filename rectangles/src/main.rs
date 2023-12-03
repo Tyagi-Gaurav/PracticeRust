@@ -15,7 +15,12 @@ impl Rectangle {
     }
 }
 
+thread_local! {
+    static mut rectangles :Vec<Rectangle> = Vec::new();
+}
+
 fn main() {
+    
     let rect1 = Rectangle {
         width: 30,
         height: 50
@@ -28,6 +33,10 @@ fn main() {
     println!("The width of the rectangle is {}", rect1.width);
 
     println!("The area of the rectangle is {}", rect1.area());
+
+    rectangles.push(Rectangle{width: 20, height:10});
+
+    println!("Rectangles vector {:?}", rectangles);
     
 }
 

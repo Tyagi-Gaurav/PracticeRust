@@ -37,3 +37,19 @@
 * A slice is a kind of reference, so it does not have ownership.
 * A string slice is a reference to part of a String.
 * If we have a string slice, we can pass that directly. If we have a String, we can pass a slice of the String or a reference to the String. This flexibility takes advantage of deref coercions30
+
+## Packages & MOdules
+* Packages; Lets you share crates.
+    * A bundle of one or more crates.
+    * Can contain as many binary crates as possible.
+    * But atmost one library crate.
+* Crates: A tree of modules that produces a library or executable
+    * A binary crate: An executable is produced and should have a `main()` function
+    * library crate: They define functionality that can be shared with multiple projects. They don't have `main()` function.
+    * Crate root is a source file that the Rust compiler starts from and makes up the root module of your crate.
+* Modules and use: Lets you control the organization, scope and privacy of paths
+* Paths: A way of naming an item, such as struct, function or module.
+* Cargo
+    * Cargo follows a convention that `src/main.rs` is the crate root of a binary crate
+    * Cargo knows that if the package directory contains `src/lib.rs`, the package contains a library crate with the same name as the package, and `src/lib.rs` is its crate root
+
