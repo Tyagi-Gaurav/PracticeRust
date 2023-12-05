@@ -38,7 +38,7 @@
 * A string slice is a reference to part of a String.
 * If we have a string slice, we can pass that directly. If we have a String, we can pass a slice of the String or a reference to the String. This flexibility takes advantage of deref coercions30
 
-## Packages & MOdules
+## Packages & Modules
 * Packages; Lets you share crates.
     * A bundle of one or more crates.
     * Can contain as many binary crates as possible.
@@ -52,4 +52,20 @@
 * Cargo
     * Cargo follows a convention that `src/main.rs` is the crate root of a binary crate
     * Cargo knows that if the package directory contains `src/lib.rs`, the package contains a library crate with the same name as the package, and `src/lib.rs` is its crate root
+
+## Difference between `self`, `&self` & `&Self`
+```
+impl MyTrait for i32 {
+    fn to_larger(self) ->i64 {
+        // This function takes ownership of self, meaning self is effectively destroyed when this function runs.
+    }
+
+    fn add_one(&mut self) {
+        // This function takes a mutable reference, it can modify itself, but will continue to live after this function
+    }
+    fn new() -> Self {
+        // Self means the current type, which is i32. This function returns something that is an i32.
+    }
+}
+```
 
