@@ -1,6 +1,7 @@
 use collections::my_vector;
 use collections::my_string;
 use collections::my_hashmap;
+use collections::my_list;
 
 fn main() {
     // vectors();

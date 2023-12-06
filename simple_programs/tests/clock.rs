@@ -1,4 +1,4 @@
-use simple_programs::Clock;
+use simple_programs::clock::Clock;
 
 //
 // Clock Creation
