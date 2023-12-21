@@ -7,6 +7,5 @@ fn increment_int_using_references() {
 #[test]
 fn increment_int_without_references() {
     let a = 5;
-    
     assert_eq!(references::increment_int_without_references(a), 6);
 }
