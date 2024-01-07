@@ -5,6 +5,8 @@ pub mod anagram;
 pub mod clock;
 pub mod space_age;
 pub mod sublist;
+pub mod minesweeper;
+pub mod beer;
 
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {

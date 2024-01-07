@@ -14,6 +14,6 @@ fn main() {
     if &a == &b {
         println!("Equal");
     } else {
-        println!("Not Equal");
+        println!("Not Equal"); //Will print Not-Equal
     }
 }

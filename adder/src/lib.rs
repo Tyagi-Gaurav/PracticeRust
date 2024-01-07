@@ -2,7 +2,7 @@ pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
 
-#[cfg(test)]    
+#[cfg(test)]
 mod tests {
     #[test]
     fn exploration() {

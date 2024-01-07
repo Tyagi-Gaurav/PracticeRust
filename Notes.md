@@ -22,7 +22,7 @@
 * The ownership of a variable follows the same pattern every time: 
     * Assigning a value to another variable moves it. 
     * When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless ownership of the data has been moved to another variable.
-    * If you don't want a function to take ownership of parameters, then pass references to the function.
+    * If you don't want a function to take ownership of parameters, then pass references (`&`) to the function.
     * When returning references from function
         * When returning a reference from a function, the lifetime parameter for the return type needs to match the lifetime parameter for one of the parameters
         * If the reference returned does not refer to one of the parameters, it must refer to a value created within this function.

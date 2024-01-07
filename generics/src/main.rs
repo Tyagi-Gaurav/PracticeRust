@@ -12,12 +12,19 @@ impl <T, U> Point<T, U> {
     }
 }
 
+//Could also specify constraints on generic types when defininig methods on the type.
+impl Point<f32, f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
 fn main() {
     let number_list = vec![34, 50, 25, 100, 25];
     let char_list = vec!['a', 'u', 'i', 'o', 'e'];
 
     println!("Largest number is {}", largest_generic(&number_list));
-    println!("Largest number is {}", largest_generic(&char_list));
+    println!("Largest char is {}", largest_generic(&char_list));
 
     let both_integer = Point {x: 5, y:10};
     let both_float = Point {x: 5.0, y:10.0};
@@ -85,20 +92,4 @@ fn largest_generic<T: std::cmp::PartialOrd>(list : &[T]) -> &T {
     }
 
     return largest;
-}
-
-fn longest_with_an_announcement<'a, T>(
-    x: &'a str,
-    y: &'a str,
-    ann: T,
-) -> &'a str
-where
-    T: Display,
-{
-    println!("Announcement! {}", ann);
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
 }
