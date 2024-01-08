@@ -51,7 +51,7 @@ fn determine_sublist<T: PartialEq>(
 }
 
 fn check_equality<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Comparison {
-    println!("Checking equality for lists of size: {}, {}", _first_list.len(), _second_list.len());
+    //println!("Checking equality for lists of size: {}, {}", _first_list.len(), _second_list.len());
     for i in 0.._first_list.len() {
         if _first_list[i] != _second_list[i] {
             return Comparison::Unequal;

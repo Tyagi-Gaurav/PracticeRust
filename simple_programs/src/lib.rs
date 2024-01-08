@@ -7,6 +7,7 @@ pub mod space_age;
 pub mod sublist;
 pub mod minesweeper;
 pub mod beer;
+pub mod armstrong;
 
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
@@ -17,7 +18,7 @@ pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
 pub fn reverse(input: &str) -> String {
     let mut rev_str = String::from("");
 
-    println!("String to reverse is {}", input);
+    //println!("String to reverse is {}", input);
     for c in input.chars().rev() {
         rev_str.push(c);
     }
