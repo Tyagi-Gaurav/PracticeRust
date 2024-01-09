@@ -8,7 +8,13 @@ pub mod sublist;
 pub mod minesweeper;
 pub mod beer;
 pub mod armstrong;
-
+pub mod difference_of_squares;
+pub mod grains;
+pub mod leap;
+pub mod nth_prime;
+pub mod sum_of_multiples;
+pub mod prime_factors;
+pub mod proverb;
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
     // todo!("What time is a gigasecond later than {start}");
