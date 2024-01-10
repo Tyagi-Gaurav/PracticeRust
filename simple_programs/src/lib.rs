@@ -16,6 +16,8 @@ pub mod sum_of_multiples;
 pub mod prime_factors;
 pub mod proverb;
 pub mod raindrops;
+pub mod bob;
+pub mod matching_brackets;
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
     // todo!("What time is a gigasecond later than {start}");
