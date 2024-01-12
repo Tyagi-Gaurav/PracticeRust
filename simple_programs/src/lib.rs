@@ -23,6 +23,7 @@ pub mod collatz_conjecture;
 pub mod series;
 pub mod kindergarten;
 pub mod diffie_hellman;
+pub mod luhn;
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
     // todo!("What time is a gigasecond later than {start}");
