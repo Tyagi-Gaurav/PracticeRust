@@ -18,6 +18,11 @@ pub mod proverb;
 pub mod raindrops;
 pub mod bob;
 pub mod matching_brackets;
+pub mod high_scores;
+pub mod collatz_conjecture;
+pub mod series;
+pub mod kindergarten;
+pub mod diffie_hellman;
 
 pub fn gigasecond_after_start_time(start: DateTime) -> DateTime {
     // todo!("What time is a gigasecond later than {start}");
