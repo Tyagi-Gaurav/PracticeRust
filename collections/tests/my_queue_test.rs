@@ -38,3 +38,17 @@ fn dequeue_all() {
 
     assert_eq!(my_queue.peek(), None);
 }
+
+#[test]
+fn count() {
+    let mut my_queue : MyQueue<u32> = MyQueue::new();
+
+    assert_eq!(my_queue.count(), 0);
+
+    my_queue.enqueue(2);
+    my_queue.enqueue(5);
+    my_queue.enqueue(7);
+    my_queue.enqueue(9);
+
+    assert_eq!(my_queue.count(), 4);
+}

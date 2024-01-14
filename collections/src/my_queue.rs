@@ -3,6 +3,7 @@ pub trait Queue<T> {
     fn enqueue(&mut self, item : T) ->();
     fn dequeue(&mut self) -> Option<T>;
     fn peek(&mut self) -> Option<&T>;
+    fn count(&mut self) -> usize;
 }
 
 pub struct MyQueue<T> {
@@ -32,5 +33,9 @@ impl<T> Queue<T> for MyQueue<T> {
 
     fn peek(&mut self) -> Option<&T> {
         self.items.get(0)
+    }
+
+    fn count(&mut self) -> usize {
+        self.items.len()
     }
 }
