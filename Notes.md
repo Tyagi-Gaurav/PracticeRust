@@ -27,14 +27,18 @@
         * When returning a reference from a function, the lifetime parameter for the return type needs to match the lifetime parameter for one of the parameters
         * If the reference returned does not refer to one of the parameters, it must refer to a value created within this function.
             * However, this would be a dangling reference because the value will go out of scope at the end of the function.
+    * Borrowing could either be
+        * Borrowing immutably
+        * Borrowing mutably
+        * Taking ownership
 
 ## References and Borrowing
 * A reference is like a pointer in that it’s an address we can follow to access the data stored at that address.
-* The opposite of referencing by using `&` is dereferencing, which is accomplished with the dereference operator, `*`.
+* The opposite of referencing `&` is dereferencing, which is accomplished with the dereference operator, `*`.
 * When functions have references as parameters instead of the actual values, we won’t need to return the values in order to give back ownership, because we never had ownership.
 * Just as variables are immutable by default, so are references. We’re not allowed to modify something we have a reference to.
 
-## Mutable Referennces
+## Mutable References
 * Mutable references have one big restriction: if you have a mutable reference to a value, you can have no other references to that value.
 * The benefit of having this restriction is that Rust can prevent data races at compile time. 
 * A data race is similar to a race condition and happens when these three behaviors occur.

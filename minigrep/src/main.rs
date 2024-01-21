@@ -4,7 +4,7 @@ use minigrep::{Config, run};
 fn main() {
     let args: Vec<String> = env::args().collect(); //Collect arguments as iterator
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem processing arguments {}", err);
         process::exit(1);
     });
