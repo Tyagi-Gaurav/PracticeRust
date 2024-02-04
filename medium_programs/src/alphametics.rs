@@ -47,49 +47,48 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
 
     loop {
         //For each comb in next_comb_set, calculate permutation and apply it.
-        // println!("Next Combination: {:?}", current_candidates);
+        println!("Next Combination: {:?}", current_candidates);
         match current_candidates {
             Some(ref mut x) => {
                 let next_permutations = permutation(&mut x.1, 0);
-                // println!("Next Permutation: {:?}", next_permutations);
-                let collect : Vec<HashMap<char, u8>> = next_permutations.into_iter()
-                    .map(|v| assign_to_letters(&v, &all_letters))
-                    .filter(|hm| {
-                        match hm {
-                            Some(x) => {
-                                let input_sum = calculate_input_value(&parsed_input,    x);
-                                let output_sum = calculate_output_value(&parsed_output, x);
-                                input_sum == output_sum
-                            },
-                            None => false
-                        }
-                    })
-                    .filter(|o| o.is_some())
-                    .map(|hm| hm.unwrap().to_owned())
-                    .collect();
-                
-                if !collect.is_empty() {
-                    // println!("Next Combination: {:?}, Input Sum: {}, Output_sum: {}", x.1, input_sum, output_sum);
-                    return collect.get(0).cloned();
+                println!("Permutation count: {}", next_permutations.len());
+                for (pos, vec) in next_permutations.into_iter().enumerate() {
+                    let letters_vec = assign_to_letters(&vec, &all_letters);
+                    match letters_vec {
+                        Some(x) => {
+                            let input_sum = calculate_input_value(&parsed_input,    &x);
+                            let output_sum = calculate_output_value(&parsed_output, &x);
+                            if input_sum == output_sum {
+                                return Some(x);
+                            }
+                        },
+                        None => continue,
+                    }
+
                 }
             }
             None => return None,
         };
+        // println!("All permutations exhausted");
         current_candidates = get_next_combination(current_candidates.as_mut().unwrap().to_owned().0);
     }
     None
 }
 
 fn assign_to_letters(combination : &Vec<u8>, all_letters: &Vec<Letter>,) -> Option<HashMap<char, u8>> {
-    let mut char_hash: HashMap<char, u8> = HashMap::new();
+    // use std::time::Instant;
+    // let now = Instant::now();
+    let mut char_hash: HashMap<char, u8> = HashMap::with_capacity(all_letters.len());
     for (pos, ch) in all_letters.into_iter().enumerate() {
-        if all_letters.get(pos).unwrap().to_owned().is_leading && combination[pos] == 0 {
+        if all_letters[pos].is_leading && combination[pos] == 0 {
             return None
         }
 
         char_hash.insert((*ch).v, combination[pos]);
     }
 
+    // let elapsed = now.elapsed();
+    // println!("Elapsed: {:.2?}", elapsed);
     Some(char_hash)
 }
 
