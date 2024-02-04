@@ -24,7 +24,6 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
             .filter(|ch| !ch.is_whitespace()),
     );
 
-    // let all_letters = get_letters(&parsed_input, &parsed_output);
     let all_letters = get_letters(&parsed_input, &parsed_output);
     //Get leading digit of all multi_digit numbers
     //Before applying a combination, check they're not 0.
@@ -36,12 +35,9 @@ pub fn solve(input: &str) -> Option<HashMap<char, u8>> {
         For each letter, create a HashMap with letter and digit.
         Apply the map to words of input and output
 
-
         //For given n number of letters, calculate subsets of numbers between 0..9, taken n at a time.
         //For each combination, apply each permutation of that number.
     */
-    // println!("All letters: {:?}", all_letters);
-
 
     let mut current_candidates : Option<(String, Vec<u8>)> = get_initial_combination(all_letters.len()); 
 
@@ -120,7 +116,6 @@ fn calculate_output_value(parsed_output: &String, value: &HashMap<char, u8>) -> 
 }
 
 fn value_of(val: &HashMap<char, u8>, ch: char) -> u64 {
-    // println!("Getting value of {} from {:?}", ch, val);
     *val.get_key_value(&ch).unwrap().1 as u64
 }
 
@@ -140,8 +135,6 @@ fn get_letters(parsed_input: &Vec<&str>, parsed_output: &String) -> Vec<Letter> 
     all_letters.append(&mut output_letters);
 
     let leading_output_letter = parsed_output.chars().nth(0).unwrap().to_owned();
-
-    // println!("Leading output letters: {:?}", leading_output_letter);
 
     all_letters.sort();
     all_letters.dedup();
@@ -187,7 +180,6 @@ fn get_next_combination(holder_as_string: String) -> Option<(String, Vec<u8>)> {
     let as_string = holder.clone().into_iter()
     .map(|d| (d + 48) as char)
     .collect();
-    // println!("Found Next combination for : {:?} with string: {}", holder.to_vec(), as_string);
 
     return Some((as_string, holder));
 }
@@ -199,20 +191,16 @@ fn permutation(input: &mut Vec<u8>, start: usize) -> Vec<Vec<u8>> {
 
     if start + 1 == input.len() {
         output.push(vec![input.last().unwrap().to_owned()]);
-        //println!("Returning Output: {:?}", output);
         return output;
     }
 
     while index + j < input.len() {
         input.swap(index, index + j);
-        //println!("Input after swap {:?}", &input);
         let mut temp_output = permutation(&mut input.clone(), start + 1);
-        //println!("Merging element {}", input[index]);
         merge(&mut temp_output, input[index]);
 
         output.append(&mut temp_output);
         j = j + 1;
-        //println!("Value of output: {:?}", &output);
     }
 
     output
